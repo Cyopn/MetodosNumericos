@@ -90,10 +90,7 @@ arp = [{
 }]
 ev = evaluateB(ap, bp, fn)
 arp.append(ev)
-print(p)
-while ev["xo"] != p or ev["rs"] != 0:
-    time.sleep(2)
-    print(ev["rs"])
+while ev["xo"] != p and ev["rs"] != 0:
     if ev["rs"] > 0:
         ev["a"] = ev["xo"]
     else:
@@ -101,7 +98,6 @@ while ev["xo"] != p or ev["rs"] != 0:
     ev = evaluateB(ev["a"], ev["b"], fn)
     arp.append(ev)
 
-print("wn")
 an = 0
 while an > n:
     an -= 1
@@ -132,7 +128,7 @@ arn = [{
 }]
 evn = evaluateB(an, bn, fn)
 arn.append(evn)
-while evn["xo"] != n:
+while evn["xo"] != n and evn["rs"] != 0:
     if evn["rs"] > 0:
         evn["a"] = evn["xo"]
     else:
