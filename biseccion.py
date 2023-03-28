@@ -1,6 +1,5 @@
 import re
 import math
-import time
 from functions.func import createTable, evaluateB
 
 print("Introduce tu ecuacion \nFormato: Ax2+Bx+C")
@@ -15,7 +14,7 @@ if a[0] != "-":
 op = cn.findall(a)
 ts = re.split("[+-]", a)
 if a[0] != "-" and len(ts) > 4:
-    print("El formato de la ecuacion es incorrfnta")
+    print("El formato de la ecuacion es incorrecta")
 elif a[0] == "-" and len(ts) <= 4:
     id = 0
     ts.pop(0)
