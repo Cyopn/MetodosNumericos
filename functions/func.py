@@ -5,12 +5,15 @@ def createTable(result: list):
         "|  Vuelta  |     a     |     b     |    f(a)   |    f(b)   |     x0    |   f(x0)   | f(a)*f(x0)|"
     )
     for i in result:
+        vs = ""
+        if v < 10:
+            vs = " "
         print(
-            f'|    {v}     |{getStr(str(i["a"]))[0]}{i["a"]}{getStr(str(i["a"]))[1]}|{getStr(str(i["b"]))[0]}{i["b"]}{getStr(str(i["b"]))[1]}|{getStr(str(i["fa"]))[0]}{i["fa"]}{getStr(str(i["fa"]))[1]}|{getStr(str(i["fb"]))[0]}{i["fb"]}{getStr(str(i["fb"]))[1]}|{getStr(str(i["xo"]))[0]}{i["xo"]}{getStr(str(i["xo"]))[1]}|{getStr(str(i["fxo"]))[0]}{i["fxo"]}{getStr(str(i["fxo"]))[1]}|{getStr(str(i["rs"]))[0]}{i["rs"]}{getStr(str(i["rs"]))[1]}|'
+            f'|    {v} {vs}   |{getStr(str(i["a"]))[0]}{i["a"]}{getStr(str(i["a"]))[1]}|{getStr(str(i["b"]))[0]}{i["b"]}{getStr(str(i["b"]))[1]}|{getStr(str(i["fa"]))[0]}{i["fa"]}{getStr(str(i["fa"]))[1]}|{getStr(str(i["fb"]))[0]}{i["fb"]}{getStr(str(i["fb"]))[1]}|{getStr(str(i["xo"]))[0]}{i["xo"]}{getStr(str(i["xo"]))[1]}|{getStr(str(i["fxo"]))[0]}{i["fxo"]}{getStr(str(i["fxo"]))[1]}|{getStr(str(i["rs"]))[0]}{i["rs"]}{getStr(str(i["rs"]))[1]}|'
         )
 
         v += 1
-    
+
     print(f'Raiz: {result[v-2]["xo"]}')
 
 
@@ -29,11 +32,11 @@ def evaluate(ap: float, bp: float, fn: dict):
         "fxo": fxo,
         "rs": axo
     }
-    
+
 def evaluateB(ap: float, bp: float, fn: dict):
     fap = round((fn["d"] * (ap * ap)) + (fn["x"] * ap) + (fn["c"]), 5)
     fbp = round((fn["d"] * (bp * bp)) + (fn["x"] * bp) + (fn["c"]), 5)
-    xo = round(((ap)+(bp))/2, 5)
+    xo = round(((ap) + (bp)) / 2, 5)
     fxo = round((fn["d"] * (xo * xo)) + (fn["x"] * xo) + (fn["c"]), 5)
     axo = round(fap * fxo, 5)
     return {
