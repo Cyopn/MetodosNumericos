@@ -16,7 +16,6 @@ def createTable(result: list):
 
     print(f'Raiz: {result[v-2]["xo"]}')
 
-
 def evaluate(ap: float, bp: float, fn: dict):
     fap = round((fn["d"] * (ap * ap)) + (fn["x"] * ap) + (fn["c"]), 5)
     fbp = round((fn["d"] * (bp * bp)) + (fn["x"] * bp) + (fn["c"]), 5)
@@ -78,3 +77,21 @@ def getStr(st: str):
         sat = "     "
 
     return [sap, sat]
+
+def gauss(gbe: list, fc: list):
+    n = len(fc)
+    #Eliminacion gaussiana
+    for k in range(n - 1):
+        for i in range(k + 1, n):
+            factor = gbe[i][k] / gbe[k][k]
+            for j in range(k, n):
+                gbe[i][j] -= factor * gbe[k][j]
+            fc[i] -= factor * fc[k]
+    x = [0] * n
+    #Sustitucion hacia atras
+    for i in range(n - 1, -1, -1):
+        x[i] = fc[i] / gbe[i][i]
+        for j in range(i):
+            fc[j] -= gbe[j][i] * x[i]
+
+    return (x)
