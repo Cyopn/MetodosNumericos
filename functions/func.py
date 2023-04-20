@@ -95,3 +95,31 @@ def gauss(gbe: list, fc: list):
             fc[j] -= gbe[j][i] * x[i]
 
     return (x)
+
+def matriz_inversa(gbe, fc):
+    res=[]
+    n = len(gbe)
+    inv = [[0] * n for i in range(n)]
+    for i in range(n):
+        inv[i][i] = 1
+    for i in range(n):
+        p = gbe[i][i]
+        for j in range(n):
+            gbe[i][j] /= p
+            inv[i][j] /= p
+        for j in range(n):
+            if j != i:
+                f = gbe[j][i]
+                for k in range(n):
+                    gbe[j][k] -= f * gbe[i][k]
+                    inv[j][k] -= f * inv[i][k]
+    res.append(inv)
+    X = [[0] for i in range(len(inv))]
+    for i in range(len(inv)):
+        for j in range(len(fc[0])):
+            for k in range(len(fc)):
+                X[i][j] += inv[i][k] * fc[k][j]
+
+    res.append(X)
+    
+    return res
